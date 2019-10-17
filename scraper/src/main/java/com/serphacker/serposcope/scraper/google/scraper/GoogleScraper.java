@@ -202,12 +202,22 @@ public class GoogleScraper {
         
         Element resDiv = lastSerpHtml.getElementById("res");
         if(resDiv != null){
-            return parseSerpLayoutRes(resDiv, urls);
+            Status status = parseSerpLayoutRes(resDiv, urls);
+            if (urls == null || urls.isEmpty()) {
+                return Status.ERROR_PARSING;
+            } else {
+                return status;
+            }
         }
 
         final Element mainDiv = lastSerpHtml.getElementById("main");
         if(mainDiv != null) {
-            return parseSerpLayoutMain(mainDiv, urls);
+            Status status = parseSerpLayoutMain(mainDiv, urls);
+            if (urls == null || urls.isEmpty()) {
+                return Status.ERROR_PARSING;
+            } else {
+                return status;
+            }
         }
         
         return Status.ERROR_PARSING;
