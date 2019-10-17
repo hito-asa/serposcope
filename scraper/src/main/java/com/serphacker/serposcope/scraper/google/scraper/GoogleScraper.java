@@ -53,10 +53,10 @@ public class GoogleScraper {
     
     final static BasicClientCookie NCR_COOKIE = new BasicClientCookie("PREF", "ID=1111111111111111:CR=2");
     static {
-        NCR_COOKIE.setDomain("google.com");
+        NCR_COOKIE.setDomain("google.co.jp");
         NCR_COOKIE.setPath("/");
         NCR_COOKIE.setAttribute(ClientCookie.PATH_ATTR, "/");
-        NCR_COOKIE.setAttribute(ClientCookie.DOMAIN_ATTR, ".google.com");
+        NCR_COOKIE.setAttribute(ClientCookie.DOMAIN_ATTR, ".google.co.jp");
     }
     
     public final static String DEFAULT_DESKTOP_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0";
@@ -148,7 +148,7 @@ public class GoogleScraper {
                 break;
         }
         
-        String hostname = "www.google.com";
+        String hostname = "www.google.co.jp";
         http.removeRoutes();
         if(search.getDatacenter() != null && !search.getDatacenter().isEmpty()){
             http.setRoute(new HttpHost(hostname, -1, "https"), new HttpHost(search.getDatacenter(), -1, "https"));
@@ -167,7 +167,7 @@ public class GoogleScraper {
     
     protected Status downloadSerp(String url, String referrer, GoogleScrapSearch search, int retry){
         if(referrer == null){
-            referrer = "https://www.google.com";
+            referrer = "https://www.google.co.jp";
         }
         
         int status = http.get(url, referrer);
@@ -414,7 +414,7 @@ public class GoogleScraper {
     }
     
     protected String buildHost(GoogleScrapSearch search){
-        return "www.google.com";
+        return "www.google.co.jp";
     }
     
     private final static String UULE_LENGTH = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
