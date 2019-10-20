@@ -59,7 +59,7 @@ public class GoogleScraper {
         NCR_COOKIE.setAttribute(ClientCookie.DOMAIN_ATTR, ".google.co.jp");
     }
     
-    public final static String DEFAULT_DESKTOP_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0";
+    public final static String DEFAULT_DESKTOP_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0 Serposcope/2.10.0";
     public final static String DEFAULT_SMARTPHONE_UA = "Mozilla/5.0 (Android 7.0; Mobile; rv:59.0) Gecko/59.0 Firefox/59.0 ";
     
     private static final Logger LOG = LoggerFactory.getLogger(GoogleScraper.class);
@@ -141,10 +141,10 @@ public class GoogleScraper {
         
         switch(search.getDevice()){
             case DESKTOP:
-                http.setUseragent(DEFAULT_DESKTOP_UA);
+                http.setUseragent(DEFAULT_DESKTOP_UA + "_" + Thread.currentThread().getName());
                 break;
             case SMARTPHONE:
-                http.setUseragent(DEFAULT_SMARTPHONE_UA);
+                http.setUseragent(DEFAULT_SMARTPHONE_UA + "_" + Thread.currentThread().getName());
                 break;
         }
         
