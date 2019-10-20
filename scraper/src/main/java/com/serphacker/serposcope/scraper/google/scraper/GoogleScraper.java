@@ -148,7 +148,7 @@ public class GoogleScraper {
                 break;
         }
         
-        String hostname = "www.google.co.jp";
+        String hostname = "google.co.jp";
         http.removeRoutes();
         if(search.getDatacenter() != null && !search.getDatacenter().isEmpty()){
             http.setRoute(new HttpHost(hostname, -1, "https"), new HttpHost(search.getDatacenter(), -1, "https"));
@@ -392,10 +392,9 @@ public class GoogleScraper {
         } catch(UnsupportedEncodingException ex){
             url += buildHost(search) + "/search?q=" + search.getKeyword();
         }
-        
-        if(search.getCountry() != null && !GoogleCountryCode.__.equals(search.getCountry())){
-            url += "&gl=" + search.getCountry().name().toLowerCase();
-        }
+
+        url += "&ie=utf-8&oe=utf-8";
+        url += "&hl=ja";
         
         String uule = buildUule(search.getLocal());
         if(uule != null){
