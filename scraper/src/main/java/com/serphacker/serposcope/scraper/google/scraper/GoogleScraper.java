@@ -225,7 +225,7 @@ public class GoogleScraper {
 
     protected Status parseSerpLayoutRes(Element resElement, List<String> urls) {
 
-        Elements h3Elts = resElement.select("a h3:first-child");
+        Elements h3Elts = resElement.select("a > h3:first-of-type");
         if(h3Elts.isEmpty()) {
             return parseSerpLayoutResLegacy(resElement, urls);
         }
